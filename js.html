@@ -1,0 +1,48 @@
+<script>
+var count = 0;
+var ss;
+window.onload = function() {
+  window.setInterval(function() {
+    runtheGet();
+    if(Boolean(ss)){
+       initialize();
+    }
+    document.getElementById("shikaku").innerHTML = count;
+    if(count>0){
+       count--;
+    }
+  }, 1000);
+}
+
+
+function initialize(){
+    runtheSet(false);
+    count = 20;
+}
+
+
+function runtheSet(i){
+   google.script.run
+       .withSuccessHandler(function() {
+            console.log("OK!"+ss+" sets");
+          })
+       .withFailureHandler(function(msg) {
+            console.log("NG"+msg);
+          })
+       .setFlag(i);
+}
+function runtheGet(){
+   google.script.run
+       .withSuccessHandler(function(r) {
+            console.log("OK!!"+r+" gets");
+            setgetValue(r);
+          })
+       .withFailureHandler(function(msg) {
+            console.log("NG"+msg);
+          })
+       .getFlag();
+}
+function setgetValue(i){
+     ss = i;
+}
+</script>

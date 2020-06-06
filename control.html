@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
+  </head>
+  <body>
+  <!--
+    <form method="post" action="hoge">
+    <table style="background-image: url(http://www.tohoho-web.com/image/popase.gif);">
+    <tr>    <td id="mes">おしてください</td> </tr>
+    <tr align="center"> <td>
+    <input type="submit" value="START!!"> </td>
+    </tr></table>
+    </form>
+    -->
+    <form name="form_1" method="post" action="https://script.google.com/macros/s/AKfycbxIOFbr5lOZvhQnq7-4DZiHEMCgN6Mw3Bjs4xl4/dev?con=1">
+    <a href="" onmousedown="pushButton();" onmouseup="changeToOmachi();">
+     <imput type="image" id ="buttonImg"  src="">
+    <div id = "oshite">&nbsp;おしてください</div>
+    <div id = "omachi">&nbsp;おまちください</div>
+    </form>
+    
+    <script>
+    let timer1;
+    const mesOshite = document.getElementById("oshite");
+    const mesOmachi = document.getElementById("omachi");
+    const btn = document.getElementById("buttonImg");
+
+window.onload=function(){
+   window.setTimeout(function(){
+   console.log("setTimeoutどうかな");
+      btn.src=_BUTTON_OFF_;
+   },3000)
+}
+
+
+function changeToOshite(){
+  console.log("おしてになったよ");
+}
+function changeToOmachi(){
+  mesOshite.style.color="black";
+  mesOmachi.style.color="red";
+  timer1 = (syori1,2000);
+}
+function pushButton(){
+   btn.src=_BUTTON_PUSHED_;
+}
+
+function syori1(){
+	mesOshite.style.color="blue";
+}
+
+</script>
+  </body>
+</html>
+
+
