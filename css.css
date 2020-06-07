@@ -1,0 +1,55 @@
+/*
+	Comment
+*/
+
+table,tr,td {
+    text-align:center;
+    vertical-align: bottom;
+}
+
+table.out{
+ background-color: #3e3a37; border-width: 12px;
+ border-style: outset; border-color: #999999;
+}
+
+td.out{
+ width: 374px;
+ height: 374px;
+ background-color: #3e3a37; border-width: 12px;
+ border-style: ridge;  border-color: #999999;
+}
+
+td.in{
+ width: 324px;
+ height: 374px;
+}
+
+.redBar {
+	color: Red;
+}
+
+.greenBar {
+	color: #00ffe9;
+}
+
+#buttonImg{
+	position:fixed;
+	top:0px;
+	left:0px;
+}
+
+#oshite{
+	font-size: 20px;
+	color : red;
+	position:fixed;
+	top:62px;
+	left:55px;
+}
+
+#omachi{
+	font-size: 20px;
+	color : black;
+	position: fixed;
+	top:222px;
+	left:55px;
+}
