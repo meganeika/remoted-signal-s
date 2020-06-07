@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="./css.css">
+<script>
+</script>
+  </head>
+  <body>
+    <form name="form_1" method="post" action="./main.html">
+ <a href="" onmousedown="pushButton();" onmouseup="changeToOmachi();">
+  <img id ="buttonImg"  src="./img/button_off.png"></a>
+<div id = "oshite">&nbsp;おしてください</div>
+<div id = "omachi">&nbsp;おまちください</div>
+    </form>
+
+
+<script>
+let timer1;
+const mesOshite = document.getElementById("oshite");
+const mesOmachi = document.getElementById("omachi");
+
+function changeToOshite(){
+    alert("hoge");
+}
+function changeToOmachi(){
+    mesOshite.style.color="black";
+    mesOmachi.style.color="red";
+    timer1 = setTimeout(syori1,2000);
+}
+function pushButton(){
+    const btn = document.getElementById("buttonImg");
+    btn.src="./img/button_pushed.png";
+}
+
+function syori1(){
+	mesOshite.style.color="blue";
+  mesOmachi.style.color="yellow";
+}
+</script>
+  </body>
+</html>
