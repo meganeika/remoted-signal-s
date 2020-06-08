@@ -7,18 +7,22 @@
   <body>
   <!--
     <form method="post" action="hoge">
-    <table style="background-image: url(http://www.tohoho-web.com/image/popase.gif);">
+    <table style="background-image: url();">
     <tr>    <td id="mes">おしてください</td> </tr>
     <tr align="center"> <td>
     <input type="submit" value="START!!"> </td>
     </tr></table>
     </form>
-    -->
-    <form name="form_1" method="post" action="https://script.google.com/macros/s/AKfycbxIOFbr5lOZvhQnq7-4DZiHEMCgN6Mw3Bjs4xl4/dev?con=1">
-    <a href="" onmousedown="pushButton();" onmouseup="changeToOmachi();">
-     <imput type="image" id ="buttonImg"  src="">
-    <div id = "oshite">&nbsp;おしてください</div>
+    
+    <form name="form_1" method="post" action="https://script.google.com/macros/s/AKfycbwVAwcPTzEhaN56rs13u7mFlgUq2vTAtMqUf2DCv7o/dev">
+    <a href="#" onmousedown="pushButton();" onmouseup="changeToOmachi();">
+    <imput type="image" id ="buttonImg"  src="https://meganeika.github.io/remoted-signal-s/img/button_off.png">-->
+<!--
+<a href="https://script.google.com/macros/s/AKfycbwVAwcPTzEhaN56rs13u7mFlgUq2vTAtMqUf2DCv7o/dev?con=2">
+-->
+    <img id ="buttonImg"  src="https://meganeika.github.io/remoted-signal-s/img/button_off.png" onmousedown="pushButton();" onmouseup="changeToOmachi();">
     <div id = "omachi">&nbsp;おまちください</div>
+    <div id = "oshite">&nbsp;おしてください</div>
     </form>
     
     <script>
@@ -26,27 +30,40 @@
     const mesOshite = document.getElementById("oshite");
     const mesOmachi = document.getElementById("omachi");
     const btn = document.getElementById("buttonImg");
+const _BUTTON_PUSHED_ = "https://meganeika.github.io/remoted-signal-s/img/button_pushed.png";
+const _BUTTON_OFF_ = "https://meganeika.github.io/remoted-signal-s/img/button_off.png";
+
 
 window.onload=function(){
+   changeToOshite();
+}
+/*   btn.src=_BUTTON_OFF_;
    window.setTimeout(function(){
-   console.log("setTimeoutどうかな");
-      btn.src=_BUTTON_OFF_;
+      console.log("setTimeoutどうかな");
+      changeToOshite();
    },3000)
 }
-
+*/
 
 function changeToOshite(){
-  console.log("おしてになったよ");
+  mesOshite.style.color="red";
+  mesOmachi.style.color="black";
 }
 function changeToOmachi(){
   mesOshite.style.color="black";
   mesOmachi.style.color="red";
-  timer1 = (syori1,2000);
+     window.setTimeout(function(){
+      console.log("setTimeoutどうかな");
+      changeToOshite();
+      pullButton();
+   },3000)
 }
 function pushButton(){
    btn.src=_BUTTON_PUSHED_;
 }
-
+function pullButton(){
+   btn.src=_BUTTON_OFF_;
+}
 function syori1(){
 	mesOshite.style.color="blue";
 }

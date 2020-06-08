@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
+  </head>
+  <body>
+     <img id ="buttonImg"  src="https://meganeika.github.io/remoted-signal-s/img/button_off.png">
+    <div id = "omachi">&nbsp;おまちください</div>
+    <div id = "oshite">&nbsp;おしてください</div>
+    
+    <script>
+    let timer1;
+    const mesOshite = document.getElementById("oshite");
+    const mesOmachi = document.getElementById("omachi");
+    const btn = document.getElementById("buttonImg");
+
+window.onload=function(){
+   changeToOmachi();
+   window.setTimeout(function(){
+      console.log("setTimeoutどうかな");
+      window.location.href = 'https://script.google.com/macros/s/AKfycbwVAwcPTzEhaN56rs13u7mFlgUq2vTAtMqUf2DCv7o/dev?con=1';
+   },3000)
+}
+
+
+function changeToOshite(){
+  mesOmachi.style.color="black";
+  mesOshite.style.color="red";
+
+}
+function changeToOmachi(){
+  mesOmachi.style.color="red";
+  mesOshite.style.color="black";
+}
+function pushButton(){
+   btn.src=_BUTTON_PUSHED_;
+}
+
+function syori1(){
+	mesOshite.style.color="blue";
+}
+
+</script>
+  </body>
+</html>
+
+

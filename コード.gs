@@ -6,6 +6,12 @@ function doGet(e){
         .setTitle('SignalTest|リモコン側')
     //    .addMetaTag('viewport', 'width=device-width, initial-scale=1')
     return htmlOut;
+  }if(num=="2"){
+    const htmlOut = HtmlService.createTemplateFromFile("control_omachi").evaluate();
+    htmlOut
+        .setTitle('SignalTest|リモコン側2')
+    //    .addMetaTag('viewport', 'width=device-width, initial-scale=1')
+    return htmlOut;
   }else{
     const htmlOut = HtmlService.createTemplateFromFile("main").evaluate();
     htmlOut
