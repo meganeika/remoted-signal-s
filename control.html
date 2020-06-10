@@ -16,14 +16,14 @@
     
     <form name="form_1" method="post" action="https://script.google.com/macros/s/AKfycbwVAwcPTzEhaN56rs13u7mFlgUq2vTAtMqUf2DCv7o/dev">
     <a href="#" onmousedown="pushButton();" onmouseup="changeToOmachi();">
-    <imput type="image" id ="buttonImg"  src="https://meganeika.github.io/remoted-signal-s/img/button_off.png">-->
+    <imput type="image" id ="buttonImg"  src="https://meganeika.github.io/remoted-signal-s/img/button_off.png">    </form>-->
 <!--
 <a href="https://script.google.com/macros/s/AKfycbwVAwcPTzEhaN56rs13u7mFlgUq2vTAtMqUf2DCv7o/dev?con=2">
 -->
     <img id ="buttonImg"  src="https://meganeika.github.io/remoted-signal-s/img/button_off.png" onmousedown="pushButton();" onmouseup="changeToOmachi();">
     <div id = "omachi">&nbsp;おまちください</div>
     <div id = "oshite">&nbsp;おしてください</div>
-    </form>
+
     
     <script>
     let timer1;
@@ -37,13 +37,6 @@ const _BUTTON_OFF_ = "https://meganeika.github.io/remoted-signal-s/img/button_of
 window.onload=function(){
    changeToOshite();
 }
-/*   btn.src=_BUTTON_OFF_;
-   window.setTimeout(function(){
-      console.log("setTimeoutどうかな");
-      changeToOshite();
-   },3000)
-}
-*/
 
 function changeToOshite(){
   mesOshite.style.color="red";

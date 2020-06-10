@@ -45,6 +45,6 @@ function getValuesFromSS(){
 }
 
 function doPost(e){
-   setToSS(e.parameter.sec);
-   return HtmlService.createTemplateFromFile("control").evaluate();
+   setFlag(true);
+   return HtmlService.createTemplateFromFile("main").evaluate();
 }
