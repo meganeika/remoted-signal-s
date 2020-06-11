@@ -1,0 +1,117 @@
+<script>
+var count = 0;
+var ss;
+var sigRed=document.getElementById("redImg");
+var sigGreen=document.getElementById("greenImg");
+var barReds=document.getElementsByClassName("redBar");
+
+/*
+var json_string='[
+ {"GREEN":"off","RED":"on","BAR":10},
+ {"GREEN":"off","RED":"on","BAR":5},
+ {"GREEN":"on","RED":"off","BAR":10}]';
+*/
+var d = [
+ {GREEN:"off",RED:"on",BAR:16},
+ {GREEN:"on",RED:"off",BAR:0},
+ {GREEN:"off",RED:"off",BAR:0},
+ {GREEN:"on",RED:"off",BAR:0},
+ {GREEN:"off",RED:"off",BAR:0},
+ {GREEN:"on",RED:"off",BAR:0},
+ {GREEN:"off",RED:"off",BAR:0},
+ {GREEN:"on",RED:"off",BAR:0},
+ {GREEN:"off",RED:"off",BAR:0},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:1},
+ {GREEN:"on",RED:"off",BAR:16},
+ {GREEN:"off",RED:"on",BAR:1},
+ {GREEN:"off",RED:"on",BAR:1},
+ {GREEN:"off",RED:"on",BAR:5},
+ {GREEN:"off",RED:"on",BAR:16}
+ ];
+
+window.onload = function() {
+  window.setInterval(function() {
+    runtheGet();
+    if(Boolean(ss)){
+       initialize();
+    }
+    document.getElementById("shikaku").innerHTML = count;
+    sigRed.style.opacity  = turnLight(d[count].RED);
+    sigGreen.style.opacity  = turnLight(d[count].GREEN);
+    /*
+    if(d[count].BAR>0){
+     barReds[0].innerHTML  = turnBarLight(d[count].BAR);
+     barReds[1].innerHTML  = turnBarLight(d[count].BAR);
+    }else{
+        barReds[0].style.opacity  = "0.0";
+        barReds[1].style.opacity  = "0.0";
+    }
+    */
+    if(count>0){
+       count--;
+    }
+  }, 500);
+}
+
+function initialize(){
+    runtheSet(false);
+    count = d.length-1;
+}
+
+function turnLight(onoff){
+  var resultStr="";
+  if(onoff == "off"){
+   resultStr= "0.1";
+  } else if(onoff == "on"){
+   resultStr= "1.0";
+  }
+//  console.log(resultStr);
+ return resultStr;
+}
+
+function turnBarLight(num){
+  var resultStr;
+  if(num>0){
+    resultStr = "||||</br>".repeat(num);
+//  console.log(resultStr);
+  }else{ // it means off
+    
+    
+  }
+  return resultStr;
+}
+
+
+function runtheSet(i){
+   google.script.run
+       .withSuccessHandler(function() {
+            console.log("OK!"+ss+" sets");
+          })
+       .withFailureHandler(function(msg) {
+            console.log("NG"+msg);
+          })
+       .setFlag(i);
+}
+function runtheGet(){
+   google.script.run
+       .withSuccessHandler(function(r) {
+            console.log("OK!!"+r+" gets");
+            setgetValue(r);
+          })
+       .withFailureHandler(function(msg) {
+            console.log("NG"+msg);
+          })
+       .getFlag();
+}
+function setgetValue(i){
+     ss = i;
+}
+</script>
