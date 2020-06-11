@@ -1,8 +1,9 @@
 ## Welcome to GitHub Pages
 
 ### 起動リンク
-[リモコン側の起動]()
-[メイン側の起動]()
+[リモコン側の起動](https://script.google.com/macros/s/AKfycbwVAwcPTzEhaN56rs13u7mFlgUq2vTAtMqUf2DCv7o/exec?con=1)
+
+[メイン側の起動](https://script.google.com/macros/s/AKfycbwVAwcPTzEhaN56rs13u7mFlgUq2vTAtMqUf2DCv7o/exec)
 
 ### やりたいけどやれていないこと
 - 押しボタン対応
