@@ -5,8 +5,6 @@
 
 [メイン側の起動](https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec?)
 
-### Image
-![anime](https://github.com/meganeika/remoted-signal-s/blob/master/img/20200612-動作確認.gif)
 
 ### やりたいけどやれていないこと
 - 押しボタン対応
