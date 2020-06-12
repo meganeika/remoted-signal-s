@@ -3,7 +3,7 @@
 ### 起動リンク
 [リモコン側の起動](https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec?con=1)
 
-[メイン側の起動](https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec?con=1)
+[メイン側の起動](https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec?)
 
 ### やりたいけどやれていないこと
 - 押しボタン対応
