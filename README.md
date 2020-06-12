@@ -1,9 +1,12 @@
 ## Welcome to GitHub Pages
 
-### 起動リンク
+### 起動リンク（新しいタブとか、新しいウィンドウとかで開いてください）
 [リモコン側の起動](https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec?con=1)
 
 [メイン側の起動](https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec?)
+
+### image
+![gifanime](./img/20200612-動作確認.gif)
 
 ### やりたいけどやれていないこと
 - 押しボタン対応
