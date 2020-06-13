@@ -17,7 +17,7 @@
     <imput type="image" id ="buttonImg"  src="https://meganeika.github.io/remoted-signal-s/img/button_off.png">    </form>
 
 -->    
-    <a href="javascript:void(0);"  onclick="changeToOmachi();">
+    <a id="atag" href="javascript:void(0);">
 <img id="buttonImg" src="https://meganeika.github.io/remoted-signal-s/img/button_off.png" alt="oshite" />
 </a>
 <form name="form_1" method="post" action="#">
@@ -31,15 +31,21 @@
     const mesOshite = document.getElementById("oshite");
     const mesOmachi = document.getElementById("omachi");
     const btn = document.getElementById("buttonImg");
+    const atag = document.getElementById("atag");
 const _BUTTON_PUSHED_ = "https://meganeika.github.io/remoted-signal-s/img/button_pushed.png";
 const _BUTTON_OFF_ = "https://meganeika.github.io/remoted-signal-s/img/button_off.png";
 
 window.onload=function(){
-   changeToOshite();
+   changeToOmachi();
+   window.setTimeout(function(){
+      console.log("setTimeoutどうかな");
+      changeToOshite(); 
+      btn.addEventListener("touchstart", pushButton, false);
+      btn.addEventListener("mousedown", pushButton, false);
+      atag.addEventListener("click",changeToOmachi,false);
+   },3000)
 }
 
-btn.addEventListener("touchstart", pushButton, false);
-btn.addEventListener("mousedown", pushButton, false);
 
 
 function changeToOshite(){
