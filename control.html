@@ -4,21 +4,12 @@
     <base target="_top">
     <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
   </head>
-  <body>
-  <!--
-    <form method="post" action="hoge">
-    <table style="background-image: url();">
-    <tr>    <td id="mes">おしてください</td> </tr>
-    <tr align="center"> <td>
-    <input type="submit" value="START!!"> </td>
-    </tr></table>
-    </form>
-    <a href="#" onmousedown="pushButton();" onmouseup="changeToOmachi();">
-    <imput type="image" id ="buttonImg"  src="https://meganeika.github.io/remoted-signal-s/img/button_off.png">    </form>
-
--->    
+  <body>  
     <a href="javascript:void(0);"  onclick="changeToOmachi();">
+<!--
 <img id="buttonImg" src="https://meganeika.github.io/remoted-signal-s/img/button_off.png" alt="oshite" />
+-->
+<img id="buttonImg" src="data:image/png;base64,<?= _BUTTON_OFF_64?>" alt="oshite" />
 </a>
 <form name="form_1" method="post" action="#">
     <div id = "omachi">&nbsp;おまちください</div>
@@ -63,12 +54,23 @@ function pullButton(){
 }
 
 function postForm() {
+    google.script.run
+       .withSuccessHandler(function() {
+            console.log("OK!");
+          })
+       .withFailureHandler(function(msg) {
+            console.log("NG"+msg);
+          })
+       .myPostWithFetch();
+}
+/*
+
      console.log("POSTOOOOOOO");
         var form = document.createElement('form');
         var request = document.createElement('input');
      
-        form.method = 'GET';//POST
-        form.action = 'https://script.google.com/macros/s/AKfycbwVAwcPTzEhaN56rs13u7mFlgUq2vTAtMqUf2DCv7o/dev';
+        form.method = 'POST';//
+        form.action = 'https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec';
      
         request.type = 'hidden'; //入力フォームが表示されないように
         request.name = 'con';
@@ -78,7 +80,7 @@ function postForm() {
         document.body.appendChild(form);
         form.submit();     
     }
-
+*/
 </script>
   </body>
 </html>

@@ -9,19 +9,19 @@ function doGet(e){
   }if(num=="2"){
     const htmlOut = HtmlService.createTemplateFromFile("control").evaluate();
     htmlOut
-        .setTitle('Signal|ボタン式リモコン側');
-    //    .addMetaTag('viewport', 'width=device-width, initial-scale=1')
+        .setTitle('Signal|ボタン式リモコン側')
+        .addMetaTag('viewport', 'width=device-width, initial-scale=1');
     return htmlOut;
   }if(num=="3"){
     const htmlOut = HtmlService.createTemplateFromFile("control_omachi").evaluate();
     htmlOut
-        .setTitle('Signal|ボタン式リモコン側2');
-    //    .addMetaTag('viewport', 'width=device-width, initial-scale=1')
+        .setTitle('Signal|ボタン式リモコン側2')
+        .addMetaTag('viewport', 'width=device-width, initial-scale=1');
     return htmlOut;
   }else{
     const htmlOut = HtmlService.createTemplateFromFile("main").evaluate();
     htmlOut
-        .setTitle('Signal|メイン側')
+        .setTitle('Signal|メイン側');
     //    .addMetaTag('viewport', 'width=device-width, initial-scale=1')
     return htmlOut;
   }
@@ -56,5 +56,31 @@ return '';
 
 function doPost(e){
    setFlag(true);
-   return HtmlService.createTemplateFromFile("countdown_control").evaluate();
+   const htmlOut = HtmlService.createTemplateFromFile("control_omachi").evaluate();
+   htmlOut
+        .setTitle('Signal|ボタン式リモコン側2')
+        .addMetaTag('viewport', 'width=device-width, initial-scale=1');
+   return htmlOut;
+}
+
+function myPostWithFetch(){
+    // POSTデータ
+var payload = {
+  "user_id" : "userid",
+  "password" : "pass",
+  "submit" : "ログイン"
+};
+// POSTオプション
+var options = {
+  "method" : "POST",
+  "payload" : payload
+};
+
+// アクセス先
+var url = "https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec"
+// POSTリクエスト
+var response = UrlFetchApp.fetch(url, options);
+// HTML結果を取得（引数のcharsetは設定したほうが良い）
+var content = response.getContentText("UTF-8");
+  
 }

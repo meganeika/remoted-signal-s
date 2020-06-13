@@ -4,9 +4,12 @@
     <base target="_top">
     <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
   </head>
-  <body>    
-    <a id="atag" href="javascript:void(0);">
-<img id="buttonImg" src="data:image/png;base64,<?= _BUTTON_OFF_64?>"  alt="oshite" />
+  <body>  
+    <a href="javascript:void(0);"  onclick="changeToOmachi();">
+<!--
+<img id="buttonImg" src="https://meganeika.github.io/remoted-signal-s/img/button_off.png" alt="oshite" />
+-->
+<img id="buttonImg" src="data:image/png;base64,<?= _BUTTON_OFF_64?>" alt="oshite" />
 </a>
 <form name="form_1" method="post" action="#">
     <div id = "omachi">&nbsp;おまちください</div>
@@ -19,34 +22,28 @@
     const mesOshite = document.getElementById("oshite");
     const mesOmachi = document.getElementById("omachi");
     const btn = document.getElementById("buttonImg");
-//    const atag = document.getElementById("atag");
 const _BUTTON_PUSHED_ = "https://meganeika.github.io/remoted-signal-s/img/button_pushed.png";
 const _BUTTON_OFF_ = "https://meganeika.github.io/remoted-signal-s/img/button_off.png";
 
 window.onload=function(){
-   changeToOmachi();
-   window.setTimeout(function(){
-      console.log("10秒setTimeout");
-      changeToOshite(); 
-//      btn.addEventListener("touchstart", pushButton, false);
-//      btn.addEventListener("mousedown", pushButton, false);
-//      btn.addEventListener("click",changeToOmachi,false);
-   },10000)
+   changeToOshite();
 }
 
+btn.addEventListener("touchstart", pushButton, false);
+btn.addEventListener("mousedown", pushButton, false);
 
 
 function changeToOshite(){
-  //mesOshite.style.color="red";
-  //mesOmachi.style.color="black";
-  getForm(); 
+  mesOshite.style.color="red";
+  mesOmachi.style.color="black";
 }
 function changeToOmachi(){
   mesOshite.style.color="black";
   mesOmachi.style.color="red";
-//  pullButton();
+  pullButton();
 //   window.setTimeout(function(){
-//  postForm();   
+  postForm();
+     
 //   },3000)
 }
 function pushButton(){
@@ -56,17 +53,17 @@ function pullButton(){
    btn.src=_BUTTON_OFF_;
 }
 
-function getForm() {
-     console.log("GETOOOOOOO");
+function postForm() {
+     console.log("POSTOOOOOOO");
         var form = document.createElement('form');
         var request = document.createElement('input');
      
-        form.method = 'GET';//
+        form.method = 'POST';//
         form.action = 'https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec';
      
         request.type = 'hidden'; //入力フォームが表示されないように
         request.name = 'con';
-        request.value = '2';
+        request.value = '3';
 
         form.appendChild(request);
         document.body.appendChild(form);
