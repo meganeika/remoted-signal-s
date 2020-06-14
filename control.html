@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
+  </head>
+  <body>  
+<img id="buttonImg" src="https://meganeika.github.io/remoted-signal-s/img/button_off.png" alt="oshite" />
+<!--
+<img id="buttonImg" src="data:image/png;base64,<?= _BUTTON_OFF_64?>" alt="oshite" />
+-->
+<form name="form_1" method="post" action="#">
+    <div id = "omachi">&nbsp;おまちください</div>
+    <div id = "oshite">&nbsp;おしてください</div>
+    </form>
+
+    
+ <script>
+    let timer1;
+    const mesOshite = document.getElementById("oshite");
+    const mesOmachi = document.getElementById("omachi");
+    const btn = document.getElementById("buttonImg");
+    const _BUTTON_PUSHED_ = "https://meganeika.github.io/remoted-signal-s/img/button_pushed.png";
+    const _BUTTON_OFF_ = "https://meganeika.github.io/remoted-signal-s/img/button_off.png";
+
+window.onload=function(){
+    btn.src=_BUTTON_OFF_;
+    eventSwitch("on");
+    changeToOshite();
+}
+
+function changeToOshite(){
+  mesOshite.style.color="red";
+  mesOmachi.style.color="black";
+}
+function changeToOmachi(){
+  mesOshite.style.color="black";
+  mesOmachi.style.color="red";
+}
+
+
+function justPushing(){
+    btn.src=_BUTTON_PUSHED_;
+}
+
+function justPulling(){
+    btn.src=_BUTTON_OFF_;
+    changeToOmachi();
+    eventSwitch("off");    
+    postForm();
+    window.setTimeout(function(){
+        changeToOshite();
+        eventSwitch("on");
+   },17000)
+}
+
+
+function eventSwitch(str){
+    if(str=="on"){
+        btn.addEventListener("touchstart",justPushing,false);
+        btn.addEventListener("mousedown",justPushing,false);
+        btn.addEventListener("click",justPulling,false);
+        console.log("event on");
+    }else{ //str="off"
+        btn.removeEventListener("touchstart",justPushing);
+        btn.removeEventListener("mousedown",justPushing);
+        btn.removeEventListener("click",justPulling);        
+        console.log("event off");
+    }
+}
+
+function postForm() {
+    google.script.run
+       .withSuccessHandler(function() {
+            console.log("OK!");
+          })
+       .withFailureHandler(function(msg) {
+            console.log("NG"+msg);
+          })
+       .myPostWithFetch();
+}
+
+</script>
+  </body>
+</html>
+
+

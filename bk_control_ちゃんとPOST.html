@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
+  </head>
+  <body>  
+    <a href="javascript:void(0);"  onclick="changeToOmachi();">
+<!--
+<img id="buttonImg" src="https://meganeika.github.io/remoted-signal-s/img/button_off.png" alt="oshite" />
+-->
+<img id="buttonImg" src="data:image/png;base64,<?= _BUTTON_OFF_64?>" alt="oshite" />
+</a>
+<form name="form_1" method="post" action="#">
+    <div id = "omachi">&nbsp;おまちください</div>
+    <div id = "oshite">&nbsp;おしてください</div>
+    </form>
+
+    
+    <script>
+    let timer1;
+    const mesOshite = document.getElementById("oshite");
+    const mesOmachi = document.getElementById("omachi");
+    const btn = document.getElementById("buttonImg");
+const _BUTTON_PUSHED_ = "https://meganeika.github.io/remoted-signal-s/img/button_pushed.png";
+const _BUTTON_OFF_ = "https://meganeika.github.io/remoted-signal-s/img/button_off.png";
+
+window.onload=function(){
+   changeToOshite();
+}
+
+btn.addEventListener("touchstart", pushButton, false);
+btn.addEventListener("mousedown", pushButton, false);
+
+
+function changeToOshite(){
+  mesOshite.style.color="red";
+  mesOmachi.style.color="black";
+}
+function changeToOmachi(){
+  mesOshite.style.color="black";
+  mesOmachi.style.color="red";
+  pullButton();
+//   window.setTimeout(function(){
+  postForm();
+     
+//   },3000)
+}
+function pushButton(){
+   btn.src=_BUTTON_PUSHED_;
+}
+function pullButton(){
+   btn.src=_BUTTON_OFF_;
+}
+
+function postForm() {
+     console.log("POSTOOOOOOO");
+        var form = document.createElement('form');
+        var request = document.createElement('input');
+     
+        form.method = 'POST';//
+        form.action = 'https://script.google.com/macros/s/AKfycbwRMBqFmmgeTJTaRt1XBCXisY97b1gKnGl74c25VyBvz-oYw5E/exec';
+     
+        request.type = 'hidden'; //入力フォームが表示されないように
+        request.name = 'con';
+        request.value = '3';
+
+        form.appendChild(request);
+        document.body.appendChild(form);
+        form.submit();     
+    }
+
+</script>
+  </body>
+</html>
+
+
