@@ -12,7 +12,7 @@ function doGet(e){
         .setTitle('Signal|ボタン式リモコン側')
         .addMetaTag('viewport', 'width=device-width, initial-scale=1');
     return htmlOut;
-  }else{
+  }else{   
     const htmlOut = HtmlService.createTemplateFromFile("main").evaluate();
     htmlOut
         .setTitle('Signal|メイン側');
@@ -40,12 +40,17 @@ function getValuesFromSS(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName('jsonlike');
   const range = sheet.getDataRange();
-//  console.log(range.getValues().toString());
-  return range.getValues.toString();
+  var result = range.getValues().toString();
+  
+  return '{"data":['+result+']}';
 }
 
-function TEST_getJson(){
-return '';
+
+function getArrLen(){
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('jsonlike');
+  const range = sheet.getDataRange();
+  return  range.getValues().length;
 }
 
 function doPost(e){

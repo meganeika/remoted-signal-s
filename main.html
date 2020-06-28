@@ -10,23 +10,26 @@
 <table class="out">
 <tr><td class="out">
 <table><tr>
-<td>
+<td class="side">
  <span class="greenBar"></span></td>
 <td class="in"> <img id ="redImg" alt=" " src="https://meganeika.github.io/remoted-signal-s/img/red.jpg"></td>
-<td> <span class="greenBar"></span>
+<td class="side"> <span class="greenBar"></span>
 </td></tr></table>
  </td></tr>
 
 <tr><td class="out">
 <table><tr>
-<td>
+<td class="side">
  <span class="redBar"></span></td>
 <td class="in"> <img id ="greenImg" style="opacity:0.1" alt=" " src="https://meganeika.github.io/remoted-signal-s/img/blue.jpg"></td>
-<td> <span class="redBar"></span>
+<td class="side"> <span class="redBar"></span>
 </td></tr></table>
  </td></tr>
 </table>
 <div id="shikaku">0</div>
+<input type="text" id="json" value='<?= getValuesFromSS() ?>' />
+<br>
+<input type="text" id="arrLen" value='<?= getArrLen() ?>' />
 
 <?!= HtmlService.createHtmlOutputFromFile('js').getContent(); ?>
 

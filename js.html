@@ -4,61 +4,35 @@ var ss;
 var sigRed=document.getElementById("redImg");
 var sigGreen=document.getElementById("greenImg");
 var barReds=document.getElementsByClassName("redBar");
+var barGreens=document.getElementsByClassName("greenBar");
 
-/*
-var json_string='[
- {"GREEN":"off","RED":"on","BAR":10},
- {"GREEN":"off","RED":"on","BAR":5},
- {"GREEN":"on","RED":"off","BAR":10}]';
-*/
-var d = [
- {GREEN:"off",RED:"on",BAR:16},
- {GREEN:"on",RED:"off",BAR:0},
- {GREEN:"off",RED:"off",BAR:0},
- {GREEN:"on",RED:"off",BAR:0},
- {GREEN:"off",RED:"off",BAR:0},
- {GREEN:"on",RED:"off",BAR:0},
- {GREEN:"off",RED:"off",BAR:0},
- {GREEN:"on",RED:"off",BAR:0},
- {GREEN:"off",RED:"off",BAR:0},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:1},
- {GREEN:"on",RED:"off",BAR:16},
- {GREEN:"off",RED:"on",BAR:1},
- {GREEN:"off",RED:"on",BAR:1},
- {GREEN:"off",RED:"on",BAR:5},
- {GREEN:"off",RED:"on",BAR:16}
- ];
+var div1 =  document.getElementById("json");
+var jsonString = div1.value;
+var div2 =  document.getElementById("arrLen");
+var arrLen = div2.value;
+
+
+var d = {data:[
+ {GREEN:"off",RED:"on",GreenBAR:16,RedBAR:0},
+ {GREEN:"on",RED:"off",GreenBAR:0,RedBAR:0}]};
 
 window.onload = function() {
+    d = JSON.parse(jsonString);
+
   window.setInterval(function() {
     runtheGet();
     if(Boolean(ss)){
        initialize();
     }
     document.getElementById("shikaku").innerHTML = count;
-    sigRed.style.opacity  = turnLight(d[count].RED);
-    sigGreen.style.opacity  = turnLight(d[count].GREEN);
-    /*
-    if(d[count].BAR>0){
-     barReds[0].innerHTML  = turnBarLight(d[count].BAR);
-     barReds[1].innerHTML  = turnBarLight(d[count].BAR);
-    }else{
-        barReds[0].style.opacity  = "0.0";
-        barReds[1].style.opacity  = "0.0";
-    }
-    */
+    sigRed.style.opacity  = turnLight(d.data[count].RED);
+    sigGreen.style.opacity  = turnLight(d.data[count].GREEN);
+
+    turnBarLight(barReds[0], d.data[count].RedBAR, "red");
+    turnBarLight(barReds[1], d.data[count].RedBAR, "red");
+    turnBarLight(barGreens[0], d.data[count].GreenBAR, "#00ffe9");
+    turnBarLight(barGreens[1], d.data[count].GreenBAR, "#00ffe9");
+    
     if(count>0){
        count--;
     }
@@ -67,7 +41,7 @@ window.onload = function() {
 
 function initialize(){
     runtheSet(false);
-    count = d.length-1;
+    count = arrLen-1;
 }
 
 function turnLight(onoff){
@@ -81,18 +55,14 @@ function turnLight(onoff){
  return resultStr;
 }
 
-function turnBarLight(num){
-  var resultStr;
+function turnBarLight(elm, num, color){
   if(num>0){
-    resultStr = "||||</br>".repeat(num);
-//  console.log(resultStr);
+     elm.style.color=color;
+     elm.innerHTML  ="||||</br>".repeat(num);
   }else{ // it means off
-    
-    
+     elm.style.color="#3e3a37";
   }
-  return resultStr;
 }
-
 
 function runtheSet(i){
    google.script.run
